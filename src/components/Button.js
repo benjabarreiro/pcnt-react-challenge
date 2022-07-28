@@ -1,5 +1,7 @@
 import React from "react";
 import styled from "styled-components";
+import { useContext } from "react";
+import { UserContext } from "../contexts/User";
 
 const StyledButton = styled.button`
   font-size: 16px;
@@ -25,9 +27,10 @@ const Wrapper = styled.div`
 `;
 
 export const Button = ({ children, disabled }) => {
+  const {error} = useContext(UserContext);
   return (
-    <Wrapper disabled={disabled}>
-      <StyledButton disabled={disabled}>{children}</StyledButton>
+    <Wrapper disabled={disabled || error}>
+      <StyledButton disabled={disabled || error}>{children}</StyledButton>
     </Wrapper>
   );
 };

@@ -1,6 +1,7 @@
 import { Header } from "./components/Header";
 import { EmptyList } from "./containers/EmptyList";
 import styled from "styled-components";
+import UserProvider from "./contexts/User";
 
 const Background = styled.div`
   height: 100%;
@@ -9,10 +10,12 @@ const Background = styled.div`
 
 function App() {
   return (
-    <Background>
-      <Header />
-      <EmptyList />
-    </Background>
+    <UserProvider>
+      <Background>
+        <Header />
+        <EmptyList />
+      </Background>
+    </UserProvider>
   );
 }
 
