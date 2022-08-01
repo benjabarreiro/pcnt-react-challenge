@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import UserProvider from './contexts/User';
 import TasksProvider from './contexts/Tasks';
 import { Main } from './containers/Main';
+import DropdownProvider from './contexts/Dropdown';
 
 const Background = styled.div`
   height: 100%;
@@ -13,10 +14,12 @@ function App() {
   return (
     <UserProvider>
       <TasksProvider>
-        <Background>
-          <Header />
-          <Main />
-        </Background>
+        <DropdownProvider>
+          <Background>
+            <Header />
+            <Main />
+          </Background>
+        </DropdownProvider>
       </TasksProvider>
     </UserProvider>
   );
