@@ -6,7 +6,9 @@ import { EmptyList } from './EmptyList';
 import { List } from './List';
 
 export const Main = () => {
-  const { list } = useContext(TasksContext);
+  const { list, filteredId } = useContext(TasksContext);
 
-  return <Wrapper>{list.length ? <List /> : <EmptyList />}</Wrapper>;
+  return (
+    <Wrapper>{filteredId !== 'ALL' ? <List /> : list.length ? <List /> : <EmptyList />}</Wrapper>
+  );
 };

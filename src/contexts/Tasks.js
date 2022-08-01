@@ -9,7 +9,7 @@ const TasksProvider = ({ children }) => {
   const [list, setList] = useState([]);
   const [error, setError] = useState();
   const [isLoading, setIsloading] = useState(false);
-  const [id, setId] = useState(1);
+  const [filteredId, setFilteredId] = useState('ALL');
 
   const { userId } = useContext(UserContext);
 
@@ -41,6 +41,17 @@ const TasksProvider = ({ children }) => {
       } else {
         setList([]);
       }
+    } catch (err) {
+      setError(err);
+    }
+  };
+
+  const fetchTasksByCompletion = async (id) => {
+    try {
+      const response = await axios.get(
+        `https://api-3sxs63jhua-uc.a.run.app/v1/todo/${userId}/${id}`
+      );
+      setList(response.data);
     } catch (err) {
       setError(err);
     }
@@ -84,23 +95,24 @@ const TasksProvider = ({ children }) => {
     }
   };
 
-  const filterTasks = (id) => {
-    const array = [...list];
+  const getTasksByFilteredId = (id) => {
     switch (id) {
-      case 2:
-        return array.filter((x) => x.completed === true);
+      case 'ALL':
+        return fetchTasks();
+      case 'COMPLETED':
+        return fetchTasksByCompletion(true);
 
-      case 3:
-        return array.filter((x) => x.completed === false);
+      case 'UNCOMPLETED':
+        return fetchTasksByCompletion(false);
 
       default:
-        return array;
+        return fetchTasks();
     }
   };
 
   useEffect(() => {
-    fetchTasks();
-  }, [isLoading]);
+    getTasksByFilteredId(filteredId);
+  }, [isLoading, filteredId]);
 
   return (
     <TasksContext.Provider
@@ -110,12 +122,11 @@ const TasksProvider = ({ children }) => {
         addTask,
         handleChange,
         completeTask,
-        filterTasks,
         deleteTask,
         deleteList,
-        error,
-        id,
-        setId
+        filteredId,
+        setFilteredId,
+        error
       }}>
       {children}
     </TasksContext.Provider>
