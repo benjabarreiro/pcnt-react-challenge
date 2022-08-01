@@ -1,7 +1,10 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Title = styled.h2`
-  font-size: ${(props) => props.fontSize}px;
-  line-height: ${(props) => props.lineHeight}px;
-  margin-bottom: 16px;
+  ${(props) => `
+font-size: ${props.fontSize}px;
+line-height: ${props.lineHeight}px;
+`}
+  ${(props) => props.mb && `margin-bottom: ${props.mb}px;`}
+  ${(props) => props.mr && `margin-right: ${props.mr}px;`}
 `;

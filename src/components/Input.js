@@ -1,5 +1,6 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useContext } from 'react';
+import styled from 'styled-components';
+import { TasksContext } from '../contexts/Tasks';
 
 const StyledInput = styled.input`
   display: block;
@@ -34,5 +35,6 @@ const StyledInput = styled.input`
 `;
 
 export const Input = () => {
-  return <StyledInput placeholder="Escribí un item" />;
+  const { handleChange, value } = useContext(TasksContext);
+  return <StyledInput placeholder="Escribí un item" value={value} onChange={handleChange} />;
 };

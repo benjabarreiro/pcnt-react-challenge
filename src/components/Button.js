@@ -1,36 +1,44 @@
-import React from "react";
-import styled from "styled-components";
-import { useContext } from "react";
-import { UserContext } from "../contexts/User";
+import React from 'react';
+import styled from 'styled-components';
+import { useContext } from 'react';
+import { UserContext } from '../contexts/User';
+import { TasksContext } from '../contexts/Tasks';
 
 const StyledButton = styled.button`
   font-size: 16px;
   line-height: 18.4px;
   font-weight: 400;
-  color: rgba(0, 0, 0, 0.5);
-  background-color: #ffffff;
-  border: none;
   border-radius: 50px;
   padding: 15px 21px;
-  width: 315px;
-  ${(props) => props.disabled && "pointer-events: none"};
+  ${(props) => `
+  ${props.disabled && props.isInForm && 'pointer-events: none'};
+    background-color: ${props.disabled ? '#ffffff' : '#000000'};
+    color: ${props.disabled ? 'rgba(0, 0, 0, 0.5)' : '#ffffff'};
+    width: ${props.isInForm ? '315px' : '129px'};
+    border: ${!props.isInForm && props.disabled ? '1px solid #585858' : 'none'};
+  `}
 `;
 
 const Wrapper = styled.div`
   display: inline;
-  ${(props) => (props.disabled ? "cursor: not-allowed" : "cursor: pointer")};
-
-  @media (max-width: 425px) {
+  ${(props) => `
+  ${
+    props.isInForm &&
+    `@media (max-width: 425px) {
     position: absolute;
     bottom: 20px;
+  }`
   }
+  ${props.disabled && props.isInForm ? 'cursor: not-allowed' : 'cursor: pointer'}
+  `}
 `;
 
-export const Button = ({ children, disabled }) => {
-  const {error} = useContext(UserContext);
+export const Button = ({ children, disabled, isInForm }) => {
   return (
-    <Wrapper disabled={disabled || error}>
-      <StyledButton disabled={disabled || error}>{children}</StyledButton>
+    <Wrapper disabled={disabled} isInForm={isInForm}>
+      <StyledButton disabled={disabled} isInForm={isInForm} type="submit">
+        {children}
+      </StyledButton>
     </Wrapper>
   );
 };

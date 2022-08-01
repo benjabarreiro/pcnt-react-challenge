@@ -2,7 +2,7 @@ import { Header } from './components/Header';
 import styled from 'styled-components';
 import UserProvider from './contexts/User';
 import TasksProvider from './contexts/Tasks';
-import { EmptyList } from './containers/EmptyList';
+import { Main } from './containers/Main';
 
 const Background = styled.div`
   height: 100%;
@@ -15,7 +15,7 @@ function App() {
       <TasksProvider>
         <Background>
           <Header />
-          <EmptyList />
+          <Main />
         </Background>
       </TasksProvider>
     </UserProvider>
