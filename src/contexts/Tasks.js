@@ -50,7 +50,7 @@ const TasksProvider = ({ children }) => {
   const completeTask = async (status, id) => {
     setIsloading(true);
     try {
-       await axios.put(`https://api-3sxs63jhua-uc.a.run.app/v1/todo/${userId}`, {
+      await axios.put(`https://api-3sxs63jhua-uc.a.run.app/v1/todo/${userId}`, {
         todoId: id,
         completed: !status
       });
@@ -77,9 +77,7 @@ const TasksProvider = ({ children }) => {
   const deleteList = async () => {
     setIsloading(true);
     try {
-      await axios.delete(
-        `https://api-3sxs63jhua-uc.a.run.app/v1/todo/${userId}/reset`
-      );
+      await axios.delete(`https://api-3sxs63jhua-uc.a.run.app/v1/todo/${userId}/reset`);
     } catch (err) {
       setError(err);
     } finally {
@@ -118,7 +116,7 @@ const TasksProvider = ({ children }) => {
         deleteList,
         error,
         id,
-        setId,
+        setId
       }}
     >
       {children}
