@@ -16,8 +16,7 @@ export const CardItem = ({ title, completed, id }) => {
           lineHeight={18.4}
           ml={12}
           fontWeight={400}
-          color={completed ? 'rgba(0, 0, 0, 0.5)' : '#000000'}
-        >
+          color={completed ? 'rgba(0, 0, 0, 0.5)' : '#000000'}>
           {title}
         </Text>
       </FlexWrapper>
@@ -28,8 +27,7 @@ export const CardItem = ({ title, completed, id }) => {
         fontWeight={700}
         color="#ffffff"
         colorHover="#5E5E5E"
-        underlined={true}
-      >
+        underlined={true}>
         Delete
       </Text>
     </FlexWrapper>

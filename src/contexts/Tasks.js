@@ -43,7 +43,6 @@ const TasksProvider = ({ children }) => {
       }
     } catch (err) {
       setError(err);
-    } finally {
     }
   };
 
@@ -117,8 +116,7 @@ const TasksProvider = ({ children }) => {
         error,
         id,
         setId
-      }}
-    >
+      }}>
       {children}
     </TasksContext.Provider>
   );

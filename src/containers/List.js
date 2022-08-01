@@ -18,7 +18,7 @@ export const List = () => {
           <CardHeader />
           <CardList />
         </Card>
-        <Button isInForm={true} disabled={error || !value.length}>
+        <Button isInForm={true} disabledStyle={error || !value.length}>
           Agregar
         </Button>
       </form>
