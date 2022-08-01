@@ -22,8 +22,8 @@ const StyledImg = styled.img`
 export const Check = ({ id, completed }) => {
   const { completeTask } = useContext(TasksContext);
   return (
-    <Circle onClick={() => completeTask(completed, id)} completed={completed}>
-      {completed && <StyledImg src={CheckIcon} alt="checked" />}
+    <Circle role="span" onClick={() => completeTask(completed, id)} completed={completed}>
+      {completed && <StyledImg role="img" src={CheckIcon} alt="checked" />}
     </Circle>
   );
 };
