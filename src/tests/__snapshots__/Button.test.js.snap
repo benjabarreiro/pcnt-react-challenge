@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Button component Button isInForm false available 1`] = `undefined`;
+
+exports[`Button component Button isInForm false disable 1`] = `undefined`;
+
+exports[`Button component Button isInForm true available 1`] = `undefined`;
+
+exports[`Button component Button isInForm true disable 1`] = `undefined`;

@@ -59,7 +59,7 @@ export const Modal = ({ closeModal }) => {
         </Text>
         <FlexWrapper justify="space-between">
           <span onClick={closeModal}>
-            <Button onClick={closeModal} disabledStyle={true}>
+            <Button disabledStyle={true}>
               Cancelar
             </Button>
           </span>
