@@ -27,7 +27,7 @@ export const CardHeader = () => {
             <img src={circlePlusFill} alt="New list button" />
           </span>
         </FlexWrapper>
-        <FlexWrapper direction="row" align="center" onClick={dropdownHandler}>
+        <FlexWrapper role="span" direction="row" align="center" onClick={dropdownHandler}>
           <Text fontSize={14} lineHeight={16.1} mr={5} fontWeight={400}>
             {selectedItem}
           </Text>
