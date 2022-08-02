@@ -19,7 +19,10 @@ export const EmptyList = () => {
       </Text>
       <form onSubmit={addTask}>
         <Input />
-        <Button isInForm={true} disabled={error || !value.length}>
+        <Button
+          isInForm={true}
+          disabledStyle={error || !value.length}
+          disabled={!value.length ? true : false}>
           Agregar
         </Button>
       </form>

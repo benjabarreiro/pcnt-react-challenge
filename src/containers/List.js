@@ -11,17 +11,18 @@ export const List = () => {
   const { error } = useContext(UserContext);
   const { value, addTask } = useContext(TasksContext);
   return (
-    <>
-      <form onSubmit={addTask}>
-        <Input />
-        <Card>
-          <CardHeader />
-          <CardList />
-        </Card>
-        <Button isInForm={true} disabledStyle={error || !value.length}>
-          Agregar
-        </Button>
-      </form>
-    </>
+    <form onSubmit={addTask}>
+      <Input />
+      <Card>
+        <CardHeader />
+        <CardList />
+      </Card>
+      <Button
+        isInForm={true}
+        disabledStyle={error || !value.length}
+        disabled={!value.length ? true : false}>
+        Agregar
+      </Button>
+    </form>
   );
 };

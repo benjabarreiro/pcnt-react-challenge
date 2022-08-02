@@ -30,10 +30,14 @@ const Wrapper = styled.div`
   `}
 `;
 
-export const Button = ({ children, disabledStyle, isInForm }) => {
+export const Button = ({ children, disabledStyle, isInForm, disabled = false }) => {
   return (
     <Wrapper disabledStyle={disabledStyle} isInForm={isInForm}>
-      <StyledButton disabledStyle={disabledStyle} isInForm={isInForm} type="submit">
+      <StyledButton
+        disabledStyle={disabledStyle}
+        isInForm={isInForm}
+        disabled={disabled && isInForm}
+        type="submit">
         {children}
       </StyledButton>
     </Wrapper>
