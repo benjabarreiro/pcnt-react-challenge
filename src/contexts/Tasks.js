@@ -106,7 +106,6 @@ const TasksProvider = ({ children }) => {
     if (userId) {
       getTasksByFilteredId(filteredId);
     }
-    console.log('hola');
   }, [isLoading, filteredId]);
 
   return (
