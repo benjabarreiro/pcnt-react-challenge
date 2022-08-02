@@ -19,7 +19,6 @@ const TasksProvider = ({ children }) => {
 
   const addTask = async (e) => {
     e.preventDefault();
-    setIsloading(true);
     try {
       await axios.post(`https://api-3sxs63jhua-uc.a.run.app/v1/todo/${userId}`, {
         title: value,
@@ -28,7 +27,7 @@ const TasksProvider = ({ children }) => {
     } catch (err) {
       setError(err);
     } finally {
-      setIsloading(false);
+      setIsloading((prev) => !prev);
       setValue('');
     }
   };
@@ -36,11 +35,7 @@ const TasksProvider = ({ children }) => {
   const fetchTasks = async () => {
     try {
       const response = await axios.get(`https://api-3sxs63jhua-uc.a.run.app/v1/todo/${userId}`);
-      if (userId) {
-        setList(response.data);
-      } else {
-        setList([]);
-      }
+      setList(response.data);
     } catch (err) {
       setError(err);
     }
@@ -58,7 +53,6 @@ const TasksProvider = ({ children }) => {
   };
 
   const completeTask = async (status, id) => {
-    setIsloading(true);
     try {
       await axios.put(`https://api-3sxs63jhua-uc.a.run.app/v1/todo/${userId}`, {
         todoId: id,
@@ -67,12 +61,11 @@ const TasksProvider = ({ children }) => {
     } catch (err) {
       setError(err);
     } finally {
-      setIsloading(false);
+      setIsloading((prev) => !prev);
     }
   };
 
   const deleteTask = async (id) => {
-    setIsloading(true);
     try {
       await axios.delete(`https://api-3sxs63jhua-uc.a.run.app/v1/todo/${userId}`, {
         todoId: id
@@ -80,18 +73,17 @@ const TasksProvider = ({ children }) => {
     } catch (err) {
       setError(err);
     } finally {
-      setIsloading(false);
+      setIsloading((prev) => !prev);
     }
   };
 
   const deleteList = async () => {
-    setIsloading(true);
     try {
       await axios.delete(`https://api-3sxs63jhua-uc.a.run.app/v1/todo/${userId}/reset`);
     } catch (err) {
       setError(err);
     } finally {
-      setIsloading(false);
+      setIsloading((prev) => !prev);
     }
   };
 
@@ -111,7 +103,10 @@ const TasksProvider = ({ children }) => {
   };
 
   useEffect(() => {
-    getTasksByFilteredId(filteredId);
+    if (userId) {
+      getTasksByFilteredId(filteredId);
+    }
+    console.log('hola');
   }, [isLoading, filteredId]);
 
   return (
