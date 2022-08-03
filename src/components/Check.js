@@ -8,6 +8,7 @@ const Circle = styled.span`
   width: 20px;
   height: 20px;
   border-radius: 50%;
+  cursor: pointer;
   ${(props) => `
 		background-color: ${props.completed ? '#FF560B' : '#ffffff'};
 		border: ${props.completed ? '1px solid #FF560B' : '1px solid #BCBCBC'};	

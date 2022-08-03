@@ -7,6 +7,7 @@ const StyledButton = styled.button`
   font-weight: 400;
   border-radius: 50px;
   padding: 15px 21px;
+  cursor: pointer;
   ${(props) => `
   ${props.disabledStyle && props.isInForm && 'pointer-events: none'};
     background-color: ${props.disabledStyle ? '#ffffff' : '#000000'};
@@ -21,12 +22,12 @@ const Wrapper = styled.div`
   ${(props) => `
   ${
     props.isInForm &&
-    `@media (max-width: 425px) {
+    `
     position: absolute;
     bottom: 20px;
-  }`
+  `
   }
-  ${props.disabledStyle && props.isInForm ? 'cursor: not-allowed' : 'cursor: pointer'}
+  ${props.disabledStyle && props.isInForm && 'cursor: not-allowed;'}
   `}
 `;
 

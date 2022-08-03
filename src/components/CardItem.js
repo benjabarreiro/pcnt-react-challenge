@@ -27,7 +27,8 @@ export const CardItem = ({ title, completed, id }) => {
         fontWeight={700}
         color="#ffffff"
         colorHover="#5E5E5E"
-        underlined={true}>
+        underlined={true}
+        pointer={true}>
         Delete
       </Text>
     </FlexWrapper>

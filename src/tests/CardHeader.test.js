@@ -43,18 +43,18 @@ describe('Card Header actions', () => {
     expect(dropdownList).not.toBeInTheDocument();
   });
 
-  test("Check new list modal opens and closes", () => {
-    render(componentsToRender)
+  test('Check new list modal opens and closes', () => {
+    render(componentsToRender);
 
-    const clickNewListIcon = screen.getByAltText('New list button')
-    fireEvent.click(clickNewListIcon)
+    const clickNewListIcon = screen.getByAltText('New list button');
+    fireEvent.click(clickNewListIcon);
 
-    const modalHeading = screen.getByText('Empezar nueva lista')
-    expect(modalHeading)
+    const modalHeading = screen.getByText('Empezar nueva lista');
+    expect(modalHeading);
 
-    const closeList = screen.getByText('Cancelar')
-    fireEvent.click(closeList)
+    const closeList = screen.getByText('Cancelar');
+    fireEvent.click(closeList);
 
-    expect(modalHeading).not.toBeInTheDocument()
-  })
+    expect(modalHeading).not.toBeInTheDocument();
+  });
 });

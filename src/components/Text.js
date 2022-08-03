@@ -12,4 +12,5 @@ color: ${props.color ? props.color : '#000000'};
     ${(props) => props.mb && `margin-bottom: ${props.mb}px;`}
     ${(props) => props.mr && `margin-right: ${props.mr}px;`}
     ${(props) => props.ml && `margin-left: ${props.ml}px;`};
+  ${(props) => props.pointer && `cursor: pointer;`}
 `;
